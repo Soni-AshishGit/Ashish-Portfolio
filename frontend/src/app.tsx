@@ -692,7 +692,7 @@ export function App() {
         >
           <GlassCard className="flex flex-col items-center justify-between gap-3 bg-slate-950/40 px-4 py-3 text-center sm:flex-row sm:text-left">
             <p className="text-[11px] text-slate-300/80">
-              53A, Khajrana, Indore · +91 88-2700-6218 · soniashishkumar164@gmail.com
+              Indore · +91 88-****-6218 · soniashishkumar164@gmail.com
             </p>
             <p className="text-[11px] text-slate-400">
               Cross-Platform .NET Developer · ashish-kumar-aa8a22183 · @soniashish11
