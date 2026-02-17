@@ -1,0 +1,171 @@
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddOpenApi();
+var corsPolicyName = "frontend";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(corsPolicyName, policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5173", "https://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+}
+
+app.UseCors(corsPolicyName);
+
+app.UseHttpsRedirection();
+
+var cvData = new CvData(
+    "Ashish Kumar",
+    "Cross-Platform .NET Developer (MVC · MAUI · Blazor · MVVM)",
+    "Results-driven Cross-Platform .NET Developer with hands-on experience in building web and mobile applications using .NET MAUI, Blazor, and C#. Skilled in MVVM architecture, RESTful API integration, and database-driven systems. Passionate about writing clean, scalable code and delivering high-quality user experiences across platforms. Proven ability to lead teams, mentor peers, and optimize application performance.",
+    new[]
+    {
+        new Experience(
+            "Winlancer Technologies Pvt Ltd | Indore (M.P.)",
+            "Dotnet Developer",
+            "Feb 2025 - Present",
+            "Delivered scalable web and cross-platform applications using C# and .NET MAUI/Blazor. Collaborated in Agile teams, implemented RESTful APIs, integrated third-party services, and optimised application performance to improve user experience.",
+            new[] { "C#", ".NET MAUI", "Blazor", "ASP.NET Core", "REST APIs", "SQL Server" }
+        ),
+        new Experience(
+            "TagX Data Solutions | Indore",
+            "Data Annotation Specialist & Data Analyst",
+            "Aug 2023 - Dec 2025",
+            "Managed large-scale annotation projects with 99%+ accuracy for ML datasets. Coordinated with data scientists and ML engineers for dataset optimisation, led a team of annotators, and performed training and quality checks.",
+            new[] { "Data Annotation", "ML Datasets", "Quality Control" }
+        ),
+        new Experience(
+            "Bharat Intern | Remote",
+            "Web Developer Intern",
+            "Mar 2023 - June 2023",
+            "Built responsive web applications and a personal portfolio using HTML, CSS, and JavaScript. Gained hands-on experience in UI/UX and front-end frameworks while collaborating with senior developers on live projects.",
+            new[] { "HTML", "CSS", "JavaScript" }
+        )
+    },
+    new[]
+    {
+        new Project(
+            "US Parking Auction",
+            "Web-based parking auction platform for managing and bidding on US parking slots. In progress.",
+            "In Progress",
+            "",
+            new[] { "ASP.NET Core", "Blazor", "SQL Server" }
+        ),
+        new Project(
+            "Instant People",
+            "Integrated app combining Dating, Job Posting, System Management, and Social Media.",
+            "Prototype",
+            "",
+            new[] { ".NET", "Blazor", "REST APIs" }
+        ),
+        new Project(
+            "GalaxyAlive.AI",
+            "AI-powered React and Vite game with civilisation-building, role-based gameplay, and real-time galaxy visualisation.",
+            "Live",
+            "",
+            new[] { "React", "Vite", "Framer Motion", "AI" }
+        ),
+        new Project(
+            "Oil Ticketing",
+            "Modern truck tracking and oil ticket management system used for logistics operations.",
+            "Live",
+            "",
+            new[] { "ASP.NET Core", "SQL Server", "REST APIs" }
+        ),
+        new Project(
+            "DeliveryLoop",
+            "US grocery delivery application with order tracking, routing, and delivery management.",
+            "Live",
+            "",
+            new[] { ".NET", "Mobile", "REST APIs" }
+        ),
+        new Project(
+            "HopeQure",
+            "Web-based Ultra Health Qure System for healthcare management and digital health services.",
+            "Live",
+            "",
+            new[] { "ASP.NET Core", "React", "SQL Server" }
+        )
+    },
+    new[]
+    {
+        new Education(
+            "M.C.A Computer Application",
+            "Vikram University, Ujjain (Madhya Pradesh) – Institute of Science and Technology. Specialisation in Cross-Platform Applications and Software Development. Core Subjects: Software Engineering, Web Technologies, Cloud Fundamentals. GPA: 7.6.",
+            "2021 – 2023 (Completed)"
+        ),
+        new Education(
+            "Bachelor of Science in Computer Science",
+            "Rajeev Gandhi P. G. College, Mandsaur (Madhya Pradesh). Academic Focus: Data Structures, OOP, DBMS, Operating Systems. Practical Exposure: C/C++, SQL-based assignments, logical problem-solving. GPA: 7.0.",
+            "2019 – 2021 (Completed)"
+        )
+    },
+    new[]
+    {
+        new Award(
+            "Most Rapid Career Growth (TagX)",
+            "Awarded \"Employee of the Year\" for exceptional dedication and performance.",
+            "TagX Data Solutions"
+        ),
+        new Award(
+            "Dedicated Team Leader (Winlancer Technologies)",
+            "Recognised for leading teams effectively and delivering successful projects.",
+            "Winlancer Technologies"
+        )
+    }
+);
+
+app.MapGet("/api/cv", () => cvData)
+    .WithName("GetCv")
+    .WithOpenApi();
+
+app.Run();
+
+record CvData(
+    string Name,
+    string Title,
+    string Summary,
+    Experience[] Experience,
+    Project[] Projects,
+    Education[] Education,
+    Award[] Awards
+);
+
+record Experience(
+    string Company,
+    string Role,
+    string Period,
+    string Description,
+    string[] Technologies
+);
+
+record Project(
+    string Name,
+    string Description,
+    string Status,
+    string LiveUrl,
+    string[] Technologies
+);
+
+record Education(
+    string Degree,
+    string Description,
+    string Period
+);
+
+record Award(
+    string Title,
+    string Description,
+    string Issuer
+);

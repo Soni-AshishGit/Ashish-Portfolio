@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', ui-sans-serif, 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top left, #0f172a, #020617 55%, #020617),
+    radial-gradient(circle at bottom right, #1e293b, transparent 60%);
+  color: #e5e7eb;
+}
+
