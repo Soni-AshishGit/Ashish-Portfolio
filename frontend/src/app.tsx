@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Github, Linkedin, Mail, X } from 'lucide-react'
+import { Github, Linkedin, Mail, X, Instagram } from 'lucide-react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { GalaxyBackground } from './components/GalaxyBackground'
 import { GlassCard } from './components/GlassCard'
@@ -212,6 +212,46 @@ export function App() {
     return () => clearInterval(interval)
   }, [])
 
+  useEffect(() => {
+    const preventDefault = (event: Event) => {
+      event.preventDefault()
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase()
+
+      if (event.ctrlKey || event.metaKey) {
+        if (['c', 'x', 's', 'p', 'u'].includes(key)) {
+          event.preventDefault()
+        }
+
+        if (event.shiftKey && ['i', 'j', 'k'].includes(key)) {
+          event.preventDefault()
+        }
+      }
+
+      if (event.key === 'F12') {
+        event.preventDefault()
+      }
+    }
+
+    document.addEventListener('copy', preventDefault)
+    document.addEventListener('cut', preventDefault)
+    document.addEventListener('paste', preventDefault)
+    document.addEventListener('contextmenu', preventDefault)
+    document.addEventListener('selectstart', preventDefault)
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('copy', preventDefault)
+      document.removeEventListener('cut', preventDefault)
+      document.removeEventListener('paste', preventDefault)
+      document.removeEventListener('contextmenu', preventDefault)
+      document.removeEventListener('selectstart', preventDefault)
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
   return (
     <GalaxyBackground>
       <motion.div
@@ -226,9 +266,6 @@ export function App() {
               Ashish Kumar
             </span>
             <nav className="hidden gap-6 text-sm text-slate-200/80 md:flex">
-              <a href="#about" className="hover:text-white">
-                About
-              </a>
               <a href="#experience" className="hover:text-white">
                 Experience
               </a>
@@ -400,24 +437,6 @@ export function App() {
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </section>
-
-          <section id="about">
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-            >
-              <GlassCard className="border-white/15 bg-slate-950/40 px-5 py-6 sm:px-6 sm:py-7">
-                <h2 className="text-lg font-semibold tracking-tight text-slate-50">
-                  About
-                </h2>
-                <p className="mt-3 max-w-2xl text-sm text-slate-200/75 sm:text-[15px]">
-                  {cv.summary}
-                </p>
-              </GlassCard>
             </motion.div>
           </section>
 
@@ -643,7 +662,20 @@ export function App() {
                   transition={{ duration: 0.45, delay: index * 0.05 }}
                 >
                   <GlassCard className="h-full border-white/15 bg-slate-950/40 px-4 py-3 text-xs">
-                    <p className="font-semibold text-slate-50">{item.title}</p>
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="font-semibold text-slate-50">{item.title}</p>
+                      {item.title === 'Guitar & Music' && (
+                        <a
+                          href="https://www.instagram.com/ashish_carvaan?igsh=MTdrYWgxdG14MTlwcA=="
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label="Open Instagram profile"
+                          className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-pink-400/60 bg-pink-500/10 text-pink-300 transition hover:bg-pink-500/20"
+                        >
+                          <Instagram className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                    </div>
                     <p className="mt-1 text-[11px] text-slate-300/80">
                       {item.description}
                     </p>
@@ -746,4 +778,3 @@ export function App() {
     </GalaxyBackground>
   )
 }
-

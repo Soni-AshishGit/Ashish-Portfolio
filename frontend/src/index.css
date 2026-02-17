@@ -14,5 +14,8 @@ body {
   background: radial-gradient(circle at top left, #0f172a, #020617 55%, #020617),
     radial-gradient(circle at bottom right, #1e293b, transparent 60%);
   color: #e5e7eb;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
