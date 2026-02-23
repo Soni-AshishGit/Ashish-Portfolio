@@ -623,7 +623,7 @@ export function App() {
               Certifications & Trainings
             </motion.h2>
             <div className="grid gap-3 md:grid-cols-2">
-              {cv.certifications.map((item, index) => (
+              {(cv.certifications ?? []).map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 18 }}
@@ -653,7 +653,7 @@ export function App() {
               Hobbies & Interests
             </motion.h2>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {cv.hobbies.map((item, index) => (
+              {(cv.hobbies ?? []).map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 16 }}

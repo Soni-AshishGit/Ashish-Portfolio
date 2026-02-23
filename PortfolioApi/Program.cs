@@ -151,6 +151,40 @@ var cvData = new CvData(
             "Winlancer Technologies"
         )
     },
+    new[]
+    {
+        new Certification(
+            ".NET MAUI & Blazor Mastery",
+            "Advanced online training and projects focused on cross-platform .NET development."
+        ),
+        new Certification(
+            "RESTful API Development",
+            "Hands-on course building RESTful APIs with C# and .NET."
+        ),
+        new Certification(
+            "HackerRank Problem Solving",
+            "Certified for algorithm and data structure problem solving challenges."
+        ),
+        new Certification(
+            "React + Vite Fundamentals",
+            "Completed interactive web development projects using React and Vite."
+        )
+    },
+    new[]
+    {
+        new Hobby(
+            "Guitar & Music",
+            "Playing and composing music."
+        ),
+        new Hobby(
+            "Gaming & AI Projects",
+            "Exploring AI-powered games and simulations."
+        ),
+        new Hobby(
+            "Writing & Blogging",
+            "Writing tech blogs and content about coding and software."
+        )
+    },
     new HologramMetadata(
         "/ashish-hologram.png",
         "galaxy-hologram",
@@ -176,6 +210,8 @@ record CvData(
     Project[] Projects,
     Education[] Education,
     Award[] Awards,
+    Certification[] Certifications,
+    Hobby[] Hobbies,
     HologramMetadata Hologram,
     BuyMeTeaMetadata BuyMeTea
 );
@@ -206,6 +242,16 @@ record Award(
     string Title,
     string Description,
     string Issuer
+);
+
+record Certification(
+    string Title,
+    string Description
+);
+
+record Hobby(
+    string Title,
+    string Description
 );
 
 record HologramMetadata(
