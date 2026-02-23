@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { GalaxyBackground } from './components/GalaxyBackground'
 import { GlassCard } from './components/GlassCard'
 import { BuyMeTea } from './components/BuyMeTea'
+import { fetchCv } from './api'
 
 type CvData = {
   name: string
@@ -194,8 +195,7 @@ export function App() {
   })
 
   useEffect(() => {
-    fetch('https://localhost:7268/api/cv')
-      .then((r) => r.json())
+    fetchCv()
       .then((data) => setCv(data))
       .catch(() => {})
   }, [])

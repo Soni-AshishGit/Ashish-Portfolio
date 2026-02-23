@@ -1,6 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenApi();
 var corsPolicyName = "frontend";
 
 builder.Services.AddCors(options =>
@@ -8,18 +7,46 @@ builder.Services.AddCors(options =>
     options.AddPolicy(corsPolicyName, policy =>
     {
         policy
-            .WithOrigins("http://localhost:5173", "https://localhost:5173")
+            .SetIsOriginAllowed(origin =>
+            {
+                if (string.IsNullOrEmpty(origin))
+                {
+                    return false;
+                }
+
+                if (origin.StartsWith("http://localhost:5173", StringComparison.OrdinalIgnoreCase) ||
+                    origin.StartsWith("https://localhost:5173", StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+
+                try
+                {
+                    var host = new Uri(origin).Host;
+                    return host.EndsWith(".vercel.app", StringComparison.OrdinalIgnoreCase);
+                }
+                catch
+                {
+                    return false;
+                }
+            })
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
 
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+builder.WebHost.ConfigureKestrel(serverOptions =>
 {
-    app.MapOpenApi();
-}
+    var portValue = Environment.GetEnvironmentVariable("PORT");
+    if (!int.TryParse(portValue, out var port))
+    {
+        port = 8080;
+    }
+
+    serverOptions.ListenAnyIP(port);
+});
+
+var app = builder.Build();
 
 app.UseCors(corsPolicyName);
 
@@ -123,12 +150,21 @@ var cvData = new CvData(
             "Recognised for leading teams effectively and delivering successful projects.",
             "Winlancer Technologies"
         )
-    }
+    },
+    new HologramMetadata(
+        "/ashish-hologram.png",
+        "galaxy-hologram",
+        "online"
+    ),
+    new BuyMeTeaMetadata(
+        true,
+        "Support my work with a virtual tea.",
+        "Buy me a Tea"
+    )
 );
 
 app.MapGet("/api/cv", () => cvData)
-    .WithName("GetCv")
-    .WithOpenApi();
+    .WithName("GetCv");
 
 app.Run();
 
@@ -139,7 +175,9 @@ record CvData(
     Experience[] Experience,
     Project[] Projects,
     Education[] Education,
-    Award[] Awards
+    Award[] Awards,
+    HologramMetadata Hologram,
+    BuyMeTeaMetadata BuyMeTea
 );
 
 record Experience(
@@ -168,4 +206,16 @@ record Award(
     string Title,
     string Description,
     string Issuer
+);
+
+record HologramMetadata(
+    string AvatarUrl,
+    string Theme,
+    string Status
+);
+
+record BuyMeTeaMetadata(
+    bool Enabled,
+    string Message,
+    string ButtonLabel
 );
