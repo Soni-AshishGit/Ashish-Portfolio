@@ -289,7 +289,7 @@ export function App() {
             </div>
             <div className="hidden items-center gap-3 md:flex">
               <a
-                href="https://github.com/soniashish11"
+                href="https://github.com/Soni-AshishGit"
                 aria-label="GitHub"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-100 backdrop-blur-md transition hover:border-blue-400/60 hover:bg-blue-400/10"
               >
@@ -346,7 +346,7 @@ export function App() {
                 </button>
                 <div className="flex gap-2 md:hidden">
                   <a
-                    href="https://github.com/soniashish11"
+                    href="https://github.com/Soni-AshishGit"
                     aria-label="GitHub"
                     className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-100 backdrop-blur-md transition hover:border-blue-400/60 hover:bg-blue-400/10"
                   >
