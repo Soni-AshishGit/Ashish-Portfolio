@@ -77,22 +77,22 @@ const cvFallback: CvData = {
   ],
   projects: [
     {
-      name: 'US Parking Auction',
-      description: 'Web-based parking auction platform for managing and bidding on US parking slots. (In Progress)',
+      name: 'Smart Parking Auction Platform',
+      description: 'Web-based parking auction platform for managing and bidding on city parking slots. (In Progress)',
       status: 'In Progress',
       liveUrl: '#',
       technologies: ['ASP.NET Core', 'Blazor', 'SQL Server'],
     },
     {
-      name: 'Instant People',
+      name: 'Unified People & Services Hub',
       description:
-        'Integrated app concept combining Dating, Job Posting, System Management, and Social Media into a single platform.',
+        'Concept platform combining dating, job posting, system management, and social features into a single experience.',
       status: 'Prototype',
       liveUrl: '#',
       technologies: ['.NET', 'Blazor', 'REST APIs'],
     },
     {
-      name: 'GalaxyAlive.AI',
+      name: 'Galaxy Strategy Simulation',
       description:
         'AI-powered React + Vite game with civilization-building, role-based gameplay, and real-time galaxy visualisation.',
       status: 'Live',
@@ -100,22 +100,22 @@ const cvFallback: CvData = {
       technologies: ['React', 'Vite', 'Framer Motion', 'AI'],
     },
     {
-      name: 'Oil Ticketing',
-      description: 'Modern truck tracking and oil ticket management system used for logistics operations.',
+      name: 'Fleet Fuel Ticketing System',
+      description: 'Modern truck tracking and fuel ticket management system used for logistics operations.',
       status: 'Live',
       liveUrl: '#',
       technologies: ['ASP.NET Core', 'SQL Server', 'REST APIs'],
     },
     {
-      name: 'DeliveryLoop',
-      description: 'US grocery delivery application with order tracking, routing, and delivery management.',
+      name: 'Last-Mile Delivery Manager',
+      description: 'Grocery delivery platform with order tracking, routing, and delivery management.',
       status: 'Live',
       liveUrl: '#',
       technologies: ['.NET', 'Mobile', 'REST APIs'],
     },
     {
-      name: 'HopeQure',
-      description: 'Web-based Ultra Health Qure System for healthcare management and digital health services.',
+      name: 'Digital Health Management Suite',
+      description: 'Web-based healthcare management system for digital consultations and health records.',
       status: 'Live',
       liveUrl: '#',
       technologies: ['ASP.NET Core', 'React', 'SQL Server'],

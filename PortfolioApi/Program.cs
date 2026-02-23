@@ -83,43 +83,43 @@ var cvData = new CvData(
     new[]
     {
         new Project(
-            "US Parking Auction",
-            "Web-based parking auction platform for managing and bidding on US parking slots. In progress.",
+            "Smart Parking Auction Platform",
+            "Web-based parking auction platform for managing and bidding on city parking slots. In progress.",
             "In Progress",
             "",
             new[] { "ASP.NET Core", "Blazor", "SQL Server" }
         ),
         new Project(
-            "Instant People",
-            "Integrated app combining Dating, Job Posting, System Management, and Social Media.",
+            "Unified People & Services Hub",
+            "Concept platform combining dating, job posting, system management, and social features into a single experience.",
             "Prototype",
             "",
             new[] { ".NET", "Blazor", "REST APIs" }
         ),
         new Project(
-            "GalaxyAlive.AI",
+            "Galaxy Strategy Simulation",
             "AI-powered React and Vite game with civilisation-building, role-based gameplay, and real-time galaxy visualisation.",
             "Live",
             "",
             new[] { "React", "Vite", "Framer Motion", "AI" }
         ),
         new Project(
-            "Oil Ticketing",
-            "Modern truck tracking and oil ticket management system used for logistics operations.",
+            "Fleet Fuel Ticketing System",
+            "Modern truck tracking and fuel ticket management system used for logistics operations.",
             "Live",
             "",
             new[] { "ASP.NET Core", "SQL Server", "REST APIs" }
         ),
         new Project(
-            "DeliveryLoop",
-            "US grocery delivery application with order tracking, routing, and delivery management.",
+            "Last-Mile Delivery Manager",
+            "Grocery delivery platform with order tracking, routing, and delivery management.",
             "Live",
             "",
             new[] { ".NET", "Mobile", "REST APIs" }
         ),
         new Project(
-            "HopeQure",
-            "Web-based Ultra Health Qure System for healthcare management and digital health services.",
+            "Digital Health Management Suite",
+            "Web-based healthcare management system for digital consultations and health services.",
             "Live",
             "",
             new[] { "ASP.NET Core", "React", "SQL Server" }
